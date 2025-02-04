@@ -8,6 +8,9 @@ def main():
         # print(len(words))
     word_count()
 
+    def sort_on(dict):
+        return dict[1]
+    
     def char_count():
         chars_count = {}
         chars = list(file_content)
@@ -17,6 +20,10 @@ def main():
                 chars_count[char_lower] = 1
             else:
                 chars_count[char_lower] = chars_count.get(char_lower) + 1
-        print(chars_count)
+        char_list = list(chars_count.items())
+        char_list.sort(reverse=True, key=sort_on)
+        for newchar in char_list:
+            if newchar[0].isalpha() == True:
+                print(f"the '{newchar}' character was found {newchar[1]} times")
     char_count()
 main()
